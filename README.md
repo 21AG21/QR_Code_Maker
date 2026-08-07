@@ -1,18 +1,25 @@
 # QR Code Maker
 
 Type a website, get a QR code. No build step, no dependencies, no network calls —
-open `index.html` in a browser and it works, including offline.
+it works offline.
+
+## Running it
 
 ```
-open index.html          # macOS
-xdg-open index.html      # Linux
+npm start                # http://localhost:8000
+npm start -- 3000        # a different port
+PORT=3000 npm start      # same, via the environment
 ```
 
-Or serve the folder if you prefer a real origin:
+`server.js` is a small static file server built on Node's standard library, so
+there is still nothing to install — `npm start` just runs `node server.js`.
 
-```
-python3 -m http.server 8000    # then visit http://localhost:8000
-```
+Opening `index.html` directly works too (`open index.html` on macOS,
+`xdg-open index.html` on Linux). Serving it over localhost is closer to how it
+will behave when deployed, and some browsers restrict downloads on `file://`.
+
+Any static host will serve the folder as-is — Vercel, GitHub Pages, S3 — since
+there is no server-side code involved.
 
 ## What it does
 
@@ -33,7 +40,8 @@ python3 -m http.server 8000    # then visit http://localhost:8000
 | `qrcode.js` | The encoder. Standalone, no dependencies, works in browsers and Node. |
 | `app.js` | Wires the input box to the encoder, draws the canvas, handles downloads. |
 | `index.html`, `style.css` | The page. |
-| `test.js` | Test suite: `node test.js` |
+| `server.js` | Static file server for local development, Node built-ins only. |
+| `test.js` | Test suite: `npm test` |
 
 ## Using the encoder on its own
 
@@ -75,4 +83,4 @@ yields a valid, scannable code either way.
 Generated codes were also decoded back with OpenCV's detector, from both the
 canvas and the downloaded SVG, and round-tripped to the exact original text.
 
-Run the suite with `node test.js`.
+Run the suite with `npm test`.
