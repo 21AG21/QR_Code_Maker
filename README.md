@@ -7,6 +7,7 @@ it works offline.
 
 ```
 npm start                # http://localhost:8000
+npm run dev              # the same thing, if that is your habit
 npm start -- 3000        # a different port
 PORT=3000 npm start      # same, via the environment
 ```
