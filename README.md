@@ -16,6 +16,8 @@ python3 -m http.server 8000    # then visit http://localhost:8000
 
 ## What it does
 
+- Opens with a code for **fremontgame.vercel.app** already generated. The box is
+  selected on load, so typing replaces it with any other site.
 - Encodes whatever you type as you type it.
 - Adds `https://` to bare hostnames, so `example.com` becomes `https://example.com`.
   Anything with its own scheme (`http:`, `mailto:`, …) is left alone.

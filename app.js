@@ -174,5 +174,6 @@
   var params = new URLSearchParams(location.search);
   if (params.get("url")) input.value = params.get("url");
   render();
-  input.focus();
+  // Select rather than just focus, so typing replaces the default straight away.
+  input.select();
 })();
