@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QR Code Maker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="card">
+      <header>
+        <h1>QR Code Maker</h1>
+        <p class="subtitle">Type a website, point a phone at the square.</p>
+      </header>
+
+      <label class="field" for="url">Website</label>
+      <input
+        id="url"
+        type="text"
+        placeholder="example.com"
+        autocomplete="url"
+        autocapitalize="off"
+        autocorrect="off"
+        spellcheck="false"
+      />
+      <p id="resolved" class="resolved" aria-live="polite"></p>
+
+      <div class="preview">
+        <canvas id="canvas" width="320" height="320" aria-label="QR code preview"></canvas>
+        <p id="placeholder" class="placeholder">Your QR code shows up here</p>
+      </div>
+
+      <p id="status" class="status" role="status"></p>
+
+      <div class="actions">
+        <button id="download-png" type="button" disabled>Download PNG</button>
+        <button id="download-svg" type="button" class="secondary" disabled>Download SVG</button>
+      </div>
+
+      <details class="options">
+        <summary>Options</summary>
+        <div class="option-row">
+          <label for="ecc">Error correction</label>
+          <select id="ecc">
+            <option value="L">Low &mdash; smallest code</option>
+            <option value="M" selected>Medium &mdash; recommended</option>
+            <option value="Q">Quartile</option>
+            <option value="H">High &mdash; survives damage</option>
+          </select>
+        </div>
+        <div class="option-row">
+          <label for="scale">Image size</label>
+          <input id="scale" type="range" min="4" max="24" value="10" />
+          <output id="scale-label">—</output>
+        </div>
+      </details>
+    </main>
+
+    <script src="qrcode.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
